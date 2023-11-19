@@ -1,0 +1,28 @@
+<h1 class="text-5xl font-bold mb-4"><%= @film.title %></h1>
+
+<div>
+  <% if @film.poster.present? %>
+    <%= image_tag @film.poster.url %>
+  <% else %>
+    <p>Постер не загружен</p>
+  <% end %>
+</div>
+
+<p><strong>Год:</strong> <%= @film.year %></p>
+<p><strong>Трейлер:</strong> <%= link_to "Watch Trailer", @film.trailer %></p>
+<p><strong>Режисёр:</strong> <%= @film.director %></p>
+<p><strong>Описание:</strong> <%= @film.description %></p>
+
+<p><strong>Жанр:</strong> <%= @film.genres.present? ? @film.genres.join(', ') : '' %></p>
+
+<% if @film.online_cinemas.present? %>
+  <p><strong>Онлайн кинотеатры:</strong></p>
+  <ul>
+    <% @film.online_cinemas.each do |cinema| %>
+      <li><%= cinema %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= link_to 'Редактировать', edit_film_path(@film) %> |
+<%= link_to 'Назад', films_path %>

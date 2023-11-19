@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: 
+  poster: 
+  year: 2023-11-19
+  trailer: 
+  director: 
+  description: 
+
+two:
+  title: 
+  poster: 
+  year: 2023-11-19
+  trailer: 
+  director: 
+  description: 

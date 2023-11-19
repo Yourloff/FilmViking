@@ -1,0 +1,7 @@
+<h1 class="text-5xl font-bold mb-4">VikingFilm</h1>
+
+<% if current_user %>
+  <p class="text-gray-600 mb-8">Добро пожаловать <%= current_user.email %>!</p>
+<% end %>
+
+<%= render 'devise/shared/links' %>

@@ -1,0 +1,51 @@
+<%= form_with(model: film, local: true, html: { multipart: true }) do |form| %>
+  <div class="max-w-md mx-auto mt-8 space-y-6">
+    <div class="mb-4">
+      <%= form.label :title, class: "block text-sm font-medium text-gray-700" %>
+      <%= form.text_field :title, class: "mt-1 p-2 border rounded-md w-full focus:outline-none focus:ring focus:border-blue-300" %>
+    </div>
+
+    <% if film.try(:poster).present? %>
+        <%= image_tag film.poster.url(:thumb) %>
+    <% end %>
+
+    <div class="mb-4">
+      <%= form.label :poster, class: "block text-sm font-medium text-gray-700" %>
+      <%= form.file_field :poster, class: "mt-1 p-2 border rounded-md w-full focus:outline-none focus:ring focus:border-blue-300" %>
+    </div>
+
+    <div class="mb-4">
+      <%= form.label :year, class: "block text-sm font-medium text-gray-700" %>
+      <%= form.date_field :year, class: "mt-1 p-2 border rounded-md w-full focus:outline-none focus:ring focus:border-blue-300" %>
+    </div>
+
+    <div class="mb-4">
+      <%= form.label :trailer, class: "block text-sm font-medium text-gray-700" %>
+      <%= form.text_field :trailer, class: "mt-1 p-2 border rounded-md w-full focus:outline-none focus:ring focus:border-blue-300" %>
+    </div>
+
+    <div class="mb-4">
+      <%= form.label :director, class: "block text-sm font-medium text-gray-700" %>
+      <%= form.text_field :director, class: "mt-1 p-2 border rounded-md w-full focus:outline-none focus:ring focus:border-blue-300" %>
+    </div>
+
+    <div class="mb-4">
+      <%= form.label :description, class: "block text-sm font-medium text-gray-700" %>
+      <%= form.text_area :description, class: "mt-1 p-2 border rounded-md w-full focus:outline-none focus:ring focus:border-blue-300" %>
+    </div>
+
+    <div class="mb-4">
+      <%= form.label :genres, class: "block text-sm font-medium text-gray-700" %>
+      <%= form.text_field :genres, value: film.try(:genres).present? ? film.genres.join(', ') : '', class: "mt-1 p-2 border rounded-md w-full focus:outline-none focus:ring focus:border-blue-300" %>
+    </div>
+
+    <div class="mb-4">
+      <%= form.label :online_cinemas, class: "block text-sm font-medium text-gray-700" %>
+      <%= form.text_field :online_cinemas, value: film.try(:online_cinemas).present? ? film.online_cinemas.join(', ') : '', class: "mt-1 p-2 border rounded-md w-full focus:outline-none focus:ring focus:border-blue-300" %>
+    </div>
+
+    <div class="flex items-center justify-between">
+      <%= form.submit "Создать", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
+    </div>
+  </div>
+<% end %>
