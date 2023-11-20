@@ -12,19 +12,18 @@ class Film
   field :genres, type: Array
   field :online_cinemas, type: Array
 
-  # before_destroy :delete_image_directory
+  before_destroy :delete_image_directory
   before_save :process_genres
   before_save :process_online_cinemas
 
   private
 
   def delete_image_directory
-    # Получаем путь к директории с изображением
-    image_path = poster.current_path
+    dir_image_path = poster.current_path
 
-    # Проверяем, существует ли директория, и удаляем ее
-    if File.directory?(File.dirname(image_path))
-      FileUtils.rm_rf(File.dirname(image_path))
+    if File.directory?(File.dirname(dir_image_path))
+      FileUtils.rm_rf(File.dirname(dir_image_path))
+      dir_image_path
     end
   end
 
